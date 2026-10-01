@@ -12,8 +12,9 @@
 use std::collections::HashMap;
 use std::sync::Mutex;
 
+use rand::Rng;
 use serde::Serialize;
-use tauri::{AppHandle, State};
+use tauri::{AppHandle, Emitter, State};
 
 use simulo_core::{Device, QrSession, Session};
 use simulo_desktop_core::{
