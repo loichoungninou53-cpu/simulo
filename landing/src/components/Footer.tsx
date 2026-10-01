@@ -2,7 +2,7 @@ import { Github, Mail } from "lucide-react";
 import Logo from "./Logo";
 
 /** ⚠️ Remplace par le dépôt GitHub réel avant mise en ligne. */
-const REPO = "https://github.com/simulo/simulo";
+const REPO = "https://github.com/loichoungninou53-cpu/simulo";
 
 const cols = [
   {

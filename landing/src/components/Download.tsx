@@ -15,7 +15,7 @@ import Reveal from "./Reveal";
  * Le fichier SimuloSetup.exe est généré par `npm run tauri build`
  * (NSIS) SUR Windows — il n'est jamais hébergé sur ce site.
  */
-const REPO = "https://github.com/simulo/simulo";
+const REPO = "https://github.com/loichoungninou53-cpu/simulo";
 const RELEASES = `${REPO}/releases`;
 
 const reqs = [
