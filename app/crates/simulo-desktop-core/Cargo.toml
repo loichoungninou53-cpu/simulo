@@ -1,0 +1,15 @@
+[package]
+name = "simulo-desktop-core"
+version = "0.1.0"
+edition = "2021"
+description = "Orchestration desktop de SIMULO : ADB Manager, Scrcpy Manager, diagnostics, erreurs en langage clair. Zéro dépendance Tauri => testable partout."
+license = "MIT"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+simulo-core = { path = "../simulo-core" }
+
+[lib]
+name = "simulo_desktop_core"

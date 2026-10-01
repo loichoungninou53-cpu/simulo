@@ -1,0 +1,907 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   SIMULO — Design system (produit)
+   Identité : Sky Green · Sky Blue · Dark Navy · White
+   Un seul source de vérité pour la couleur / l'espace / la motion.
+   100 % local : zéro asset externe, zéro police distante.
+   ================================================================== */
+
+:root {
+  /* ---- marque (figée) ---- */
+  --simulo-blue: #38bdf8;
+  --simulo-green: #34d399;
+  --simulo-dark: #05080f;
+  --simulo-white: #ffffff;
+  --simulo-muted: #98a2b3;
+
+  /* ---- surfaces (Dark Navy, premium) ---- */
+  --bg: #05070d;
+  --bg-2: #080c15;
+  --surface: #0e1420;
+  --surface-2: #131c2b;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --txt: #f4f7fb;
+  --txt-dim: #aab3c2;
+  --txt-mute: #6b7482;
+  --ok: #1db954; /* statut "connecté" (couleur produit) */
+  --warn: #f5b544;
+
+  /* ---- accent ACTIF (bleu ciel par défaut) ---- */
+  --accent: var(--simulo-blue);
+  --accent-soft: #7dd3fc;
+  --accent-bright: #bae6fd;
+  --accent-deep: #0369a1;
+  --accent-glow: rgba(56, 189, 248, 0.28);
+  --accent-glow-2: rgba(14, 165, 233, 0.12);
+  --accent-10: rgba(56, 189, 248, 0.1);
+  --accent-15: rgba(56, 189, 248, 0.15);
+  --accent-30: rgba(56, 189, 248, 0.3);
+  --panel-tint: rgba(7, 58, 92, 0.22);
+  --sel: rgba(56, 189, 248, 0.32);
+  --logo-a: #7dd3fc;
+  --logo-b: #0c4a6e;
+
+  /* ---- échelle typographique ---- */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --h2: clamp(1.85rem, 4.4vw, 2.8rem);
+  --h1: clamp(2.35rem, 6.4vw, 4.4rem);
+
+  /* ---- espace (4px base) ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.75rem;
+  --sp-12: 3.5rem;
+
+  /* ---- rayons ---- */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-full: 9999px;
+
+  /* ---- ombres ---- */
+  --sh-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 18px 40px -24px rgba(0, 0, 0, 0.9);
+  --sh-phone: 0 30px 55px -18px rgba(0, 0, 0, 0.85), 0 4px 12px rgba(0, 0, 0, 0.5);
+  --sh-laptop: 0 44px 70px -26px rgba(0, 0, 0, 0.9), 0 8px 20px rgba(0, 0, 0, 0.4);
+  --sh-focus: 0 0 0 3px var(--accent-30);
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.21, 1);
+  --dur-fast: 0.18s;
+  --dur-med: 0.45s;
+  --dur-slow: 0.8s;
+}
+
+/* ---- thème VERT CLAIR (activé via .theme-green sur <html>) ---- */
+.theme-green {
+  --accent: var(--simulo-green);
+  --accent-soft: #6ee7b7;
+  --accent-bright: #a7f3d0;
+  --accent-deep: #047857;
+  --accent-glow: rgba(52, 211, 153, 0.26);
+  --accent-glow-2: rgba(16, 185, 129, 0.12);
+  --accent-10: rgba(52, 211, 153, 0.1);
+  --accent-15: rgba(52, 211, 153, 0.15);
+  --accent-30: rgba(52, 211, 153, 0.3);
+  --panel-tint: rgba(6, 78, 59, 0.2);
+  --sel: rgba(52, 211, 153, 0.32);
+  --logo-a: #6ee7b7;
+  --logo-b: #064e3b;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--sel);
+}
+
+/* focus clavier visible (accessibilité) */
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+  border-radius: 10px;
+}
+
+/* ---------- typo ---------- */
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-soft);
+}
+.h2 {
+  font-size: var(--h2);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.lead {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  color: var(--txt-dim);
+}
+
+/* ---------- sections (respirant, pas de carte partout) ---------- */
+.section {
+  padding: 4.5rem 0;
+  position: relative;
+}
+.section--tight {
+  padding: 3.25rem 0;
+}
+@media (min-width: 768px) {
+  .section {
+    padding: 6.5rem 0;
+  }
+}
+.wrap {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 640px) {
+  .wrap {
+    padding: 0 2rem;
+  }
+}
+
+/* ---------- boutons ---------- */
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: var(--r-full);
+  padding: 0.85rem 1.7rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #05070d;
+  background: var(--simulo-white);
+  transition: transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.btn-white:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 12px 34px rgba(255, 255, 255, 0.16);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: var(--r-full);
+  padding: 0.85rem 1.6rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  border: 1px solid var(--line-strong);
+  transition: background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+}
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: var(--r-full);
+  padding: 0.85rem 1.6rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #05070d;
+  background: var(--accent);
+  transition: transform var(--dur-fast) var(--ease),
+    filter var(--dur-fast) var(--ease);
+}
+.btn-accent:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* ---------- cartes ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  transition: background var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+}
+.card-hover:hover {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+
+/* ---------- halos de marque ---------- */
+.halo-hero {
+  background: radial-gradient(
+    ellipse 58% 46% at 70% 26%,
+    var(--accent-glow) 0%,
+    var(--accent-glow-2) 45%,
+    transparent 72%
+  );
+}
+.halo-cta {
+  background: radial-gradient(
+    ellipse 60% 60% at 50% 108%,
+    var(--accent-glow) 0%,
+    var(--accent-glow-2) 45%,
+    transparent 72%
+  );
+}
+
+/* ---------- apparition au scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- point "connecté" ---------- */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: var(--r-full);
+  background: var(--ok);
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--r-full);
+  border: 1.5px solid rgba(29, 185, 84, 0.55);
+  animation: pulse-ring 1.9s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* ==================================================================
+   MOCKUP — TÉLÉPHONE RÉALISTE (contient l'image fournie)
+   ================================================================== */
+.pf {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.45; /* ratio de l'image fournie (736/1636) */
+}
+.pf-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 34px;
+  background: linear-gradient(145deg, #33363d 0%, #0b0d11 42%, #05070b 100%);
+  padding: 6px;
+  box-shadow: var(--sh-phone), inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 22px rgba(0, 0, 0, 0.6);
+}
+.pf-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 29px;
+  overflow: hidden;
+  background: #000 center/cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.pf-screen--mirror {
+  /* version miniature reprise dans l'écran du PC */
+  aspect-ratio: 0.45;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.pf-island {
+  position: absolute;
+  top: 2.6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  aspect-ratio: 9 / 2.6;
+  border-radius: var(--r-full);
+  background: #000;
+  z-index: 3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.pf-island::after {
+  content: "";
+  position: absolute;
+  right: 9%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #141821;
+  box-shadow: inset 0 0 2px rgba(120, 160, 255, 0.4);
+}
+.pf-btn {
+  position: absolute;
+  right: -1.5px;
+  top: 22%;
+  width: 2.4px;
+  height: 9%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #20242b, #0c0e12);
+}
+.pf-btn--v {
+  top: 16%;
+  height: 6.5%;
+}
+.pf-reflection {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.09) 46%,
+    rgba(255, 255, 255, 0.02) 54%,
+    transparent 68%
+  );
+}
+.pf-shadow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -7%;
+  height: 14%;
+  background: radial-gradient(ellipse 50% 100% at 50% 0%, rgba(0, 0, 0, 0.6), transparent 72%);
+  z-index: -1;
+}
+
+/* ==================================================================
+   MOCKUP — LAPTOP RÉALISTE (posé sur un bureau)
+   ================================================================== */
+.lb {
+  position: relative;
+  width: 100%;
+  filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.45));
+}
+.lb-lid {
+  position: relative;
+  border-radius: 16px 16px 8px 8px;
+  padding: 9px 9px 0;
+  background: linear-gradient(180deg, #2b333f 0%, #171d27 40%, #0c111a 100%);
+  box-shadow: var(--sh-laptop), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+.lb-screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 7px;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% -10%, #101a2b 0%, #070c16 55%, #05070d 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 40px rgba(0, 0, 0, 0.6);
+}
+.lb-hinge {
+  position: relative;
+  height: 7px;
+  background: linear-gradient(180deg, #232a35, #0b0f16);
+  border-radius: 2px;
+}
+.lb-base {
+  position: relative;
+  height: 34px;
+  margin: 0 -3.2%;
+  border-radius: 3px 3px 12px 12px;
+  background: linear-gradient(180deg, #e7ebf1 0%, #b9c0cb 30%, #8b93a1 100%);
+  box-shadow: 0 20px 34px -8px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 8px 0;
+  gap: 4px;
+}
+.lb-keys {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 2px;
+}
+.lb-keys i {
+  background: linear-gradient(180deg, #f2f5f9, #c9cfda);
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12) inset, 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.lb-trk {
+  height: 0;
+}
+.lb-base::after {
+  /* encoche de doigt (notch) au bord avant */
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15%;
+  height: 5px;
+  background: linear-gradient(180deg, #7d8592, #9aa2ae);
+  border-radius: 0 0 8px 8px;
+}
+.lb-reflection {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 0;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+  border-radius: 8px 8px 40% 40%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---- contenu Simulo dans l'écran du laptop ---- */
+.lb-ui {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(6px, 0.82vw, 10px);
+}
+.lb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  flex-shrink: 0;
+}
+.lb-brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+.lb-brand .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--logo-a), var(--logo-b));
+}
+.lb-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+.lb-main {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  min-height: 0;
+  position: relative;
+}
+.lb-empty {
+  text-align: center;
+  color: #94a3b8;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+.lb-empty .ico {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-15);
+  border: 1px solid var(--accent-30);
+  color: var(--accent-soft);
+}
+.lb-empty b {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+.lb-dev {
+  width: 78%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-strong);
+  padding: 8px 10px;
+  text-align: left;
+}
+.lb-dev .row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lb-dev .name {
+  font-weight: 800;
+  color: #fff;
+}
+.lb-dev .meta {
+  color: #94a3b8;
+  margin-top: 3px;
+}
+/* le téléphone MIRROIRED dans l'écran du PC */
+.lb-mirror {
+  position: relative;
+  width: 40%;
+  max-width: 130px;
+  aspect-ratio: 0.45;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000 center/cover no-repeat;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  animation: mirror-in var(--dur-slow) var(--ease) both;
+}
+@keyframes mirror-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.lb-mirror .scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 34%;
+  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.22), transparent);
+  animation: scan 2.6s ease-in-out infinite;
+}
+@keyframes scan {
+  0%,
+  100% {
+    top: -34%;
+  }
+  50% {
+    top: 100%;
+  }
+}
+.lb-cursor {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50% 50% 50% 4px;
+  background: #fff;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  animation: cursor-path 6s ease-in-out infinite;
+  z-index: 3;
+}
+@keyframes cursor-path {
+  0% {
+    left: 58%;
+    top: 34%;
+  }
+  30% {
+    left: 70%;
+    top: 52%;
+  }
+  55% {
+    left: 62%;
+    top: 66%;
+  }
+  80% {
+    left: 74%;
+    top: 44%;
+  }
+  100% {
+    left: 58%;
+    top: 34%;
+  }
+}
+.lb-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  padding: 5px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.35);
+  color: #e2e8f0;
+  backdrop-filter: blur(3px);
+}
+
+/* ==================================================================
+   SECTION "DEMO" — scène bureau (laptop + téléphone posés)
+   ================================================================== */
+.desk {
+  position: relative;
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(80% 60% at 50% 8%, rgba(255, 255, 255, 0.05), transparent 60%),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
+  border: 1px solid var(--line);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(1.75rem, 4vw, 2.5rem);
+  overflow: hidden;
+}
+.desk::before {
+  /* table (ligne d'horizon) */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12%;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+.desk-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+}
+.desk .lb-wrap {
+  width: min(100%, 520px);
+  flex-shrink: 1;
+}
+.desk .pf-wrap {
+  width: clamp(120px, 24%, 176px);
+  flex-shrink: 0;
+  margin-bottom: clamp(0.5rem, 2vw, 1.25rem);
+}
+@media (max-width: 720px) {
+  .desk-stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .desk .pf-wrap {
+    width: 150px;
+    margin-bottom: 0;
+  }
+}
+
+/* câble USB reliant le téléphone au laptop */
+.cable {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  width: 0;
+  height: 0;
+  z-index: 0;
+}
+.cable-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 3px;
+  border-radius: 3px;
+  background: #2a313c;
+  transform-origin: left center;
+}
+.cable-line.on {
+  background: linear-gradient(90deg, var(--accent), transparent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* rail d'étapes de la démo (interactif) */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+}
+.step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--r-full);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--txt-mute);
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+.step-btn:hover {
+  color: #fff;
+  border-color: var(--line-strong);
+}
+.step-btn .n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+}
+.step-btn.active {
+  color: #05070d;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.step-btn.active .n {
+  background: rgba(5, 7, 13, 0.18);
+}
+.step-btn.done {
+  color: var(--txt-dim);
+}
+.step-btn.done .n {
+  background: var(--ok);
+  color: #05070d;
+}
+
+/* ==================================================================
+   ESPACE SIMULO (aperçu interactif du dashboard de l'app)
+   ================================================================== */
+.win-dots {
+  display: flex;
+  gap: 6px;
+}
+.win-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+.win-dots i:nth-child(1) {
+  background: #ff5f57;
+}
+.win-dots i:nth-child(2) {
+  background: #febc2e;
+}
+.win-dots i:nth-child(3) {
+  background: #28c840;
+}
+.side-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--txt-mute);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  white-space: nowrap;
+}
+.side-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+.side-item.active {
+  background: var(--accent-15);
+  color: var(--accent-bright);
+}
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.sw {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.14);
+  transition: background var(--dur-fast) var(--ease);
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+.sw::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.sw.on {
+  background: var(--accent);
+}
+.sw.on::after {
+  transform: translateX(18px);
+}
+
+/* pastille statuts génériques */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: var(--r-full);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.pill--ok {
+  background: rgba(29, 185, 84, 0.12);
+  color: #7ee0a2;
+}
+.pill--warn {
+  background: rgba(245, 181, 68, 0.12);
+  color: #f6cf8a;
+}
+.pill--mute {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--txt-dim);
+}
+.pill--accent {
+  background: var(--accent-15);
+  color: var(--accent-soft);
+  border: 1px solid var(--accent-30);
+}
+
+/* ==================================================================
+   REDUCED MOTION — le design reste complet sans animation
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .lb-mirror,
+  .lb-mirror .scan,
+  .lb-cursor,
+  .pulse-dot::after,
+  .btn-white,
+  .btn-accent,
+  .card-hover {
+    animation: none !important;
+    transition: none !important;
+  }
+  .lb-mirror {
+    opacity: 1;
+    transform: none;
+  }
+  .lb-mirror .scan {
+    display: none;
+  }
+}

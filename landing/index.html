@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulo — Connecte ton téléphone à Windows</title>
+    <meta
+      name="description"
+      content="Mire et contrôle ton smartphone depuis Windows avec Simulo. Rapide, simple et privé."
+    />
+    <meta property="og:title" content="Simulo" />
+    <meta
+      property="og:description"
+      content="Mire et contrôle ton smartphone depuis Windows avec Simulo. Rapide, simple et privé."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Applique le thème sauvegardé AVANT le premier rendu (zéro flash)
+      try {
+        if (localStorage.getItem("simulo-theme") === "green") {
+          document.documentElement.classList.add("theme-green");
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

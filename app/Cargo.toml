@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["crates/simulo-core", "crates/simulo-desktop-core"]
+# src-tauri est exclu du workspace sandbox : il compile sur Windows
+# (il a besoin des libs GTK/webkit) et se lance via `npm run tauri`.
+exclude = ["src-tauri"]
+
+[profile.release]
+strip = true
+lto = true

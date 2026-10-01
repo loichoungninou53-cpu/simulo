@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SIMULO — Options de logo</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px 64px;
+    background: #05070d; color: #f4f7fb;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .sub { color: #8a93a2; margin: 0 0 32px; font-size: 0.95rem; max-width: 60ch; line-height: 1.5; }
+  .grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    max-width: 1120px; margin: 0 auto;
+  }
+  .card {
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px; overflow: hidden;
+    background: #0b1019;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.2); }
+  .preview {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; justify-items: center;
+    padding: 26px 10px; gap: 0;
+  }
+  .preview .dark { background: radial-gradient(120% 120% at 30% 10%, #0e1626, #05070d); }
+  .preview .light { background: #eef1f6; }
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px; border-top: 1px solid rgba(255,255,255,0.07);
+    font-weight: 800; letter-spacing: 0.14em; font-size: 0.95rem;
+  }
+  .desc { padding: 0 18px 18px; }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 999px;
+    background: rgba(56,189,248,0.14); color: #7dd3fc; margin-bottom: 10px;
+  }
+  .card.current .tag { background: rgba(29,185,84,0.14); color: #6ee7a2; }
+  .name { font-size: 1.02rem; font-weight: 800; margin: 0 0 6px; }
+  .txt { font-size: 0.82rem; color: #8a93a2; line-height: 1.5; margin: 0; }
+</style>
+</head>
+<body>
+  <div style="max-width:1120px;margin:0 auto">
+    <h1>SIMULO — options de logo</h1>
+    <p class="sub">4 pistes vectorielles (fond du motif suit la marque : bleu ciel ↔ vert clair). Chacune est testée sur fond sombre et clair, en grand (icône app) et en petit (favicon / barre de fenêtre). Dis-moi laquelle te plaît — ou une combinaison — et je l'applique partout (favicon, nav, footer, icône Windows).</p>
+  </div>
+
+  <!-- définitions (symbol + gradients), réutilisées en plusieurs tailles -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="cur" viewBox="0 0 64 64">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#0c4a6e"/></linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf7ff"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+      </defs>
+      <rect x="3" y="3" width="58" height="58" rx="15" fill="url(#g)"/>
+      <rect x="3" y="3" width="58" height="58" rx="15" fill="none" stroke="rgba(255,255,255,0.14)"/>
+      <rect x="14" y="17" width="18" height="30" rx="4.5" fill="#06131f"/>
+      <rect x="17" y="21" width="12" height="20" rx="1.6" fill="url(#g2)"/>
+      <circle cx="23" cy="43" r="1.3" fill="#06131f"/>
+      <g stroke="#06131f" stroke-width="1.9" stroke-linecap="round"><path d="M34 25h5"/><path d="M34 32h7"/><path d="M34 39h5"/></g>
+      <rect x="42" y="22" width="16" height="20" rx="3" fill="#06131f"/>
+      <rect x="44.5" y="25" width="11" height="14" rx="1.5" fill="url(#g2)"/>
+    </symbol>
+    <symbol id="a" viewBox="0 0 64 64">
+      <defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#0c4a6e"/></linearGradient></defs>
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#a)"/>
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="none" stroke="rgba(255,255,255,0.14)"/>
+      <rect x="15" y="20" width="14" height="24" rx="3.5" fill="#06131f"/>
+      <rect x="17.5" y="23" width="9" height="18" rx="1.5" fill="#eaf7ff"/>
+      <path d="M30 32h10" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M40 28.5l4 3.5-4 3.5z" fill="#eaf7ff"/>
+      <rect x="45" y="22" width="12" height="20" rx="2.5" fill="#06131f"/>
+      <rect x="47" y="25" width="8" height="14" rx="1.2" fill="#eaf7ff"/>
+    </symbol>
+    <symbol id="b" viewBox="0 0 64 64">
+      <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#064e3b"/></linearGradient></defs>
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#b)"/>
+      <rect x="4" y="4" width="56" height="56" rx="15" fill="none" stroke="rgba(255,255,255,0.14)"/>
+      <rect x="27" y="17" width="27" height="21" rx="3.5" fill="rgba(6,19,31,0.5)"/>
+      <rect x="30" y="20" width="21" height="15" rx="1.8" fill="#eaf7ff"/>
+      <rect x="15" y="23" width="17" height="27" rx="4.2" fill="#06131f"/>
+      <rect x="17.6" y="26" width="11.8" height="21" rx="1.8" fill="#a7f3d0"/>
+      <circle cx="23.5" cy="46.8" r="1.2" fill="#06131f"/>
+    </symbol>
+    <symbol id="c" viewBox="0 0 64 64">
+      <defs><linearGradient id="c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#047857"/></linearGradient></defs>
+      <rect x="4" y="4" width="56" height="56" rx="16" fill="#050b1a"/>
+      <rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="url(#c)" stroke-width="1.4" opacity="0.55"/>
+      <path d="M41 22 C 33 17, 24 20, 24 26 C 24 32.5, 41 31.5, 41 38 C 41 44, 31 47, 23 42" fill="none" stroke="url(#c)" stroke-width="4.6" stroke-linecap="round"/>
+      <circle cx="43" cy="43" r="2.5" fill="#eaf7ff"/>
+    </symbol>
+  </svg>
+
+  <div class="grid">
+    <!-- ACTUEL -->
+    <div class="card current">
+      <div class="preview">
+        <div class="dark"><svg width="128" height="128"><use href="#cur"/></svg></div>
+        <div class="light"><svg width="128" height="128"><use href="#cur"/></svg></div>
+      </div>
+      <div class="row"><svg width="24" height="24"><use href="#cur"/></svg> SIMULO</div>
+      <div class="desc">
+        <span class="tag">Actuel</span>
+        <p class="name">Mirroring (3 flux)</p>
+        <p class="txt">Téléphone projeté sur un écran PC, relié par 3 faisceaux. Lisibles en grand et en petit.</p>
+      </div>
+    </div>
+
+    <!-- A -->
+    <div class="card">
+      <div class="preview">
+        <div class="dark"><svg width="128" height="128"><use href="#a"/></svg></div>
+        <div class="light"><svg width="128" height="128"><use href="#a"/></svg></div>
+      </div>
+      <div class="row"><svg width="24" height="24"><use href="#a"/></svg> SIMULO</div>
+      <div class="desc">
+        <span class="tag">Concept A</span>
+        <p class="name">Faisceau unique</p>
+        <p class="txt">Le même motif, simplifié : un seul faisceau + flèche. Plus net, plus « casting ».</p>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="card">
+      <div class="preview">
+        <div class="dark"><svg width="128" height="128"><use href="#b"/></svg></div>
+        <div class="light"><svg width="128" height="128"><use href="#b"/></svg></div>
+      </div>
+      <div class="row"><svg width="24" height="24"><use href="#b"/></svg> SIMULO</div>
+      <div class="desc">
+        <span class="tag">Concept B</span>
+        <p class="name">Chevauchement</p>
+        <p class="txt">Téléphone posé devant l'écran (vert). Met l'accent sur « ton téléphone sur ton PC ».</p>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="card">
+      <div class="preview">
+        <div class="dark"><svg width="128" height="128"><use href="#c"/></svg></div>
+        <div class="light"><svg width="128" height="128"><use href="#c"/></svg></div>
+      </div>
+      <div class="row"><svg width="24" height="24"><use href="#c"/></svg> SIMULO</div>
+      <div class="desc">
+        <span class="tag">Concept C</span>
+        <p class="name">Monogramme S</p>
+        <p class="txt">Fond sombre, anneau bicolore, « S » en dégradé + point miroir. Plus sobre, très brandable.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
