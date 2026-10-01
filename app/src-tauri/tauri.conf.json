@@ -37,10 +37,11 @@
     "windows": {
       "nsis": {
         "installMode": "both",
-        "languages": ["English", "French"],
-        "displayLanguageSelector": true,
-        "oneClick": false,
-        "allowDowngrades": true
+        "languages": [
+          "English",
+          "French"
+        ],
+        "displayLanguageSelector": true
       }
     }
   }
