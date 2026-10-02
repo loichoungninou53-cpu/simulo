@@ -2,7 +2,7 @@ import { Download, Usb, Wifi, QrCode, Cpu, ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
 import { Laptop, Phone } from "./mockups";
 
-const PHONE_IMG = "url('/phone.jpg')";
+const PHONE_IMG = "url('phone.jpg')";
 
 /** Écran du laptop en état "connecté + mirroring" (le plus lisible). */
 function ConnectedScreen() {

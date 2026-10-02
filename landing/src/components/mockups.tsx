@@ -9,7 +9,7 @@
  *  aucune distorsion.
  */
 
-const PHONE_IMG = "url('/phone.jpg')";
+const PHONE_IMG = "url('phone.jpg')";
 
 /** Téléphone réaliste. `className` ajuste la largeur via le wrapper. */
 export function Phone({ className = "" }: { className?: string }) {
